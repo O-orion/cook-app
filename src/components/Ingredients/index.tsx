@@ -29,7 +29,7 @@ export function Ingredients () {
 
     function handleSearch() {
         // navegando para outra interface
-        router.navigate("/recipes/")
+        router.navigate("/receita/")
     }
 
     return (
