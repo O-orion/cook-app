@@ -22,7 +22,12 @@ export function Ingredients () {
         <ScrollView contentContainerStyle={style.container} showsVerticalScrollIndicator={false}>
             {
                 Array.from({ length: 100}).map((item, index) => (
-                    <Ingredient  key={index} name="tomate" image="" selected onPress={() => handleToggleSelected(""+index)} />
+                    <Ingredient  
+                    key={index} name="tomate" 
+                    image="" 
+                    selected={selected.includes(String(index))} 
+                    onPress={() => handleToggleSelected(""+index)}
+                     />
                 ))
             }
         </ScrollView>
