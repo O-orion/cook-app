@@ -1,8 +1,9 @@
-import { FlatList, ScrollView, View, Alert } from "react-native";
+import { ScrollView, Alert } from "react-native";
 import { Ingredient } from "../Ingredient";
 import { style } from "./style";
 import { useState } from "react";
 import { Selected } from "../selected";
+import { router } from "expo-router";
 
 export function Ingredients () {
 
@@ -26,6 +27,11 @@ export function Ingredients () {
        
     }
 
+    function handleSearch() {
+        // navegando para outra interface
+        router.navigate("/recipes/")
+    }
+
     return (
         // Criando uma lista
         <>
@@ -42,7 +48,12 @@ export function Ingredients () {
                 }
             </ScrollView>
             { selected.length > 0 && (
-                <Selected quantity={selected.length} onClear={handleClearSelected} onSearch={()=>{}}></Selected>
+                <Selected 
+                quantity={selected.length} 
+                onClear={handleClearSelected} 
+                onSearch={handleSearch}>
+
+                </Selected>
 
             )}
         

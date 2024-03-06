@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { style } from "./style";
 import {  MaterialIcons } from '@expo/vector-icons'
 import { theme } from "@/theme";
+import { Button } from "../Button";
 
 type Props = {
     quantity: number,
@@ -21,6 +22,7 @@ export function Selected({ quantity, onClear, onSearch }: Props) {
                 </Text>
                 <MaterialIcons name="close" size={24} onPress={onClear} color={theme.colors.gray_400}></MaterialIcons>
             </View>
+            <Button title="Encontrar" onPress={onSearch}></Button>
         </Animated.View>
     )
 }
