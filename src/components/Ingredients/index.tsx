@@ -4,10 +4,13 @@ import { style } from "./style";
 import { useState } from "react";
 import { Selected } from "../selected";
 import { router } from "expo-router";
+import { useEffect } from "react";
+import { services } from "@/services";
 
 export function Ingredients () {
 
-    const [ selected, setSelected ] = useState<string[]>([])
+    const [ selected, setSelected ] = useState<string[] >([])
+    const [ingredients, setIngredients] = useState<IngredientsResponse[]>([])
 
     function handleToggleSelected(value: string) {
 
@@ -32,17 +35,20 @@ export function Ingredients () {
         router.navigate("/receita/")
     }
 
+    useEffect(() => {
+        services.ingredients.findAll().then(setIngredients)
+    })
     return (
         // Criando uma lista
         <>
             <ScrollView contentContainerStyle={style.container} showsVerticalScrollIndicator={false}>
                 {
-                    Array.from({ length: 100}).map((item, index) => (
+                    ingredients.map((item) => (
                         <Ingredient  
-                        key={index} name="tomate" 
-                        image="" 
-                        selected={selected.includes(String(index))} 
-                        onPress={() => handleToggleSelected(""+index)}
+                        key={item.id} name={item.name} 
+                        image={item.image} 
+                        selected={selected.includes(String(item.id))} 
+                        onPress={() => handleToggleSelected(item.id)}
                          />
                     ))
                 }
