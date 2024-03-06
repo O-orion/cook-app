@@ -32,7 +32,7 @@ export function Ingredients () {
 
     function handleSearch() {
         // navegando para outra interface
-        router.navigate("/receita/")
+        router.navigate("/recipes/" +  selected)
     }
 
     useEffect(() => {
@@ -46,7 +46,7 @@ export function Ingredients () {
                     ingredients.map((item) => (
                         <Ingredient  
                         key={item.id} name={item.name} 
-                        image={item.image} 
+                        image={`${services.storage.imagePath}/${item.image}`} 
                         selected={selected.includes(String(item.id))} 
                         onPress={() => handleToggleSelected(item.id)}
                          />

@@ -7,7 +7,7 @@ import { router } from "expo-router";
 export default function Index() {
     function handleSearch() {
         // navegando para outra interface
-        router.navigate("/receita/")
+        router.navigate("/recipes/")
     }
     return (
         <View style={styles.container}>
@@ -21,8 +21,6 @@ export default function Index() {
             </Text>
 
             <Ingredients />
-
-            <Button title="proxima pagina" onPress={handleSearch}></Button>
         </View>
     )
 }
